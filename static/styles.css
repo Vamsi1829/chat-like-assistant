@@ -1,0 +1,214 @@
+:root {
+  --bg: #101018;
+  --text: #fff;
+  --highlight: #00bcd4;
+}
+
+body.dark {
+  --bg: #f1f5f9;
+  --text: #000;
+  --highlight: #007c91;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(var(--bg), #000010);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text);
+  overflow: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--highlight);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.chess-border {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, #ffffff10 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff10 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask: radial-gradient(closest-side, transparent 100px, black 180px);
+  z-index: 1;
+}
+
+.welcome-modal {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 50%;
+  max-width: 1000 px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(20px);
+  z-index: 10;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.welcome-modal h2 {
+  margin-bottom: 15px;
+  font-size: 26px;
+  color: var(--highlight);
+}
+
+.welcome-modal p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.welcome-modal button {
+  background: var(--highlight);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--highlight);
+}
+
+.container {
+  position: absolute;
+  top: 0; bottom: 60px;
+  left: 0; right: 0;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+}
+
+.message {
+  padding: 15px;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  animation: fadeInMsg 0.4s ease-in-out;
+  position: relative;
+}
+
+.message.user { text-align: right; color: #80deea; }
+.message.ai { color: var(--text); }
+
+.profile-icon {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 4px 8px;
+  background: var(--highlight);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@keyframes fadeInMsg {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.input-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  padding: 10px 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 5;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.input-bar input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  width: 1000px;
+  margin-right: 10px;
+}
+
+.input-bar button {
+  padding: 16px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--highlight);
+  color: white;
+  cursor: pointer;
+}
+/* Logo styles */
+.bottom-left-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.bottom-left-logo img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.bottom-right-logo img:hover {
+  transform: scale(1.1);
+}
