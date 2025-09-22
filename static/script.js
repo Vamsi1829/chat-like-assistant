@@ -48,7 +48,7 @@ function sendToAI() {
   appendMessage(code, "user");
   appendMessage("<i>Typing...</i>", "ai");
 
-  fetch("http://127.0.0.1:5000/api", {
+  fetch("https://chat-like-assistant.onrender.com/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ prompt: code })  // ✅ Changed from `code` to `prompt`
