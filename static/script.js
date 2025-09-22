@@ -51,7 +51,7 @@ function sendToAI() {
   fetch("https://chat-like-assistant.onrender.com/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: code })  // ✅ Changed from `code` to `prompt`
+    body: JSON.stringify({ prompt: hi })  // ✅ Changed from `code` to `prompt`
   })
   .then(res => res.json())
   .then(data => {
