@@ -25,7 +25,7 @@ except Exception as e:
 def index():
     return render_template('index.html')
 
-@app.route('/api', methods=['POST'])
+@app.route('/chat', methods=['POST'])
 def generate_response():
     if not model:
         return jsonify({'error': 'Model not initialized'}), 500
